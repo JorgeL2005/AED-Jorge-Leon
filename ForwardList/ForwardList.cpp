@@ -61,24 +61,38 @@ public:
         nuevo->next = nullptr;
     }; // Agrega un elemento al final
 
-    void pop_front(){
-        Node<T>* temp = head;
-        head = head->next;
-        delete temp;
+    T pop_front(){
+        if (head == nullptr){
+            return T();
+        }else{
+            Node<T>* temp = head;
+            T data = temp->data;
+            head = head->next;
+            delete temp;
+            return data;
+        }
     }; // Remueve el elemento al comienzo
 
-    void pop_back(){
-        if (head->next == nullptr){
-            delete head;
-            head = nullptr;
-        }
-        else{
-            Node<T>* temp = head;
-            while(temp->next->next != nullptr){
-                temp = temp -> next;
+    T pop_back(){
+        if (head == nullptr){
+            return T();
+        }else{
+            if (head->next == nullptr){
+                T data = head->data;
+                delete head;
+                head = nullptr;
+                return data;
             }
-            delete temp -> next;
-            temp->next = nullptr;
+            else{
+                Node<T>* temp = head;
+                while(temp->next->next != nullptr){
+                    temp = temp -> next;
+                }
+                T data = temp->next->data;
+                delete temp -> next;
+                temp->next = nullptr;
+                return data;
+            }
         }
     }; // Remueve el elemento al final
 
@@ -120,9 +134,6 @@ public:
     }; // Retorna el tamaño de la lista
 
     void clear(){
-        if (head == nullptr){
-            cout << "La lista esta vacia" << endl;
-        }
         while (head != nullptr){
             Node<T>* temp = head;
             head = head -> next;
@@ -130,7 +141,9 @@ public:
         }
     }; // Elimina todos los elementos de la lista
 
-    void sort(); // Implemente un algoritmo de ordenacion con listas enlazadas)
+    void sort(){
+
+    }; // Implemente un algoritmo de ordenacion con listas enlazadas)
 
     void reverse(){
         if(head != nullptr){
@@ -153,27 +166,38 @@ public:
 int main(){
 // Pruebas de los códigos
 
-    // Test de front y back
-    List<double> lista;
-
-    cout << lista.empty() << endl;
-    cout << lista.back() << endl;
-    cout << lista.front() << endl;
-
-    lista.push_front(6);
-    lista.push_front(7);
-    lista.push_front(2);
-    lista.push_back(4);
-    lista.push_back(9);
-
-    cout << lista.empty() << endl;
+    // Test de vacio
+    cout << "Test en lista vacia: " << endl;
+    List<double> lista; // Creo una lista vacía
     cout << lista.front() << endl;
     cout << lista.back() << endl;
+    cout << lista.size() << endl;
 
-    lista.pop_front();
-    cout << lista.front() << endl;
-    lista.pop_back();
-    cout << lista.back() << endl;
+    // Test de pushes
+    cout << "Test de pushear valores: " << endl;
+    List<float> lista2;
+    lista2.push_front(1.1);
+    lista2.push_front(2.1);
+    lista2.push_front(3.1);
+    lista2.push_back(4.1);
+    lista2.push_back(5.1);
+    cout << lista2.front() << endl;
+    cout << lista2.back() << endl;
+
+    // test imprimir lista
+    cout << "Lista: "<< endl;
+    for (int i = 0; i < lista2.size(); i++){
+        cout << lista2[i] << " -> ";
+    } cout << "null";
+    cout << endl;
+
+    // Test de pops
+    cout << "Test de pops: " << endl;
+    lista2.pop_front();
+    lista2.pop_back();
+    cout << lista2.front() << endl;
+    cout << lista2.back() << endl;
+
 
 
     // test reverse
@@ -187,16 +211,16 @@ int main(){
     list3.push_front(3);
     list3.push_front(9);
     list3.push_front(6);
-    cout << "original: ";
+    cout << "Lista original: ";
     for (int i = 0; i < list3.size(); i++){
-        cout << list3[i] << " ";
-    }
+        cout << list3[i] << " -> ";
+    } cout << "null";
 
     list3.reverse();
     cout << endl;
     cout << "reverso: ";
     for (int i = 0; i < list3.size(); i++){
-        cout << list3[i] << " ";
-    }
+        cout << list3[i] << " -> ";
+    } cout << "null";
 
 }
