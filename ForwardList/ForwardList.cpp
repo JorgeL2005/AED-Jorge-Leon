@@ -18,6 +18,12 @@ public:
     List(){
         head = nullptr;
     };
+
+    List(T dato){
+        head->data = dato;
+        head->next = nullptr;
+    }
+
     ~List(){
         clear();
     }
@@ -175,7 +181,7 @@ int main(){
 
     // Test de pushes
     cout << "Test de pushear valores: " << endl;
-    List<float> lista2;
+    List<float> lista2(8.8);
     lista2.push_front(1.1);
     lista2.push_front(2.1);
     lista2.push_front(3.1);
