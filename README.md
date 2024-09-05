@@ -1,4 +1,4 @@
-# AED-Jorge-Leon
+# Algoritmos y Estructuras de Datos / UTEC 2024-2 (Jorge Leon)
 Repositorio para códigos del curso. 
 
 Carpetas:
