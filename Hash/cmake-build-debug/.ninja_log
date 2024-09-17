@@ -1,0 +1,4 @@
+# ninja log v5
+6	296	7482944416604402	build.ninja	f70861e8c8cd17f
+0	501	7482944236077916	CMakeFiles/Hash.dir/HashMap.cpp.obj	c27332b5b797ee7b
+502	688	7482944237887399	Hash.exe	41a0b8d24a60dbbf
