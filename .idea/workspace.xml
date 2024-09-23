@@ -9,7 +9,14 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d304581a-88e0-4cfa-a2a7-1dd3288722b2" name="Changes" comment="" />
+    <list default="true" id="d304581a-88e0-4cfa-a2a7-1dd3288722b2" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Hash/HashMap.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Hash/HashMap.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hash/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/Hash/cmake-build-debug/.ninja_deps" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hash/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/Hash/cmake-build-debug/.ninja_log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hash/cmake-build-debug/CMakeFiles/Hash.dir/HashMap.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/Hash/cmake-build-debug/CMakeFiles/Hash.dir/HashMap.cpp.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hash/cmake-build-debug/Hash.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Hash/cmake-build-debug/Hash.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hash/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/Hash/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -48,7 +55,7 @@
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "D:/Utec ciclo 2024-2/AED-Jorge-Leon",
+    "last_opened_file_path": "D:/Utec ciclo 2024-2/AED-Jorge-Leon/BST",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -66,6 +73,7 @@
       <updated>1725491792159</updated>
       <workItem from="1725491793192" duration="54000" />
       <workItem from="1726590666723" duration="448000" />
+      <workItem from="1727108265563" duration="25000" />
     </task>
     <servers />
   </component>

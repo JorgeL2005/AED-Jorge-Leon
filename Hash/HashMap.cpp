@@ -357,14 +357,9 @@ string generarPalabra(int longitud) {
 int main() {
     Hashmap<string, int> h(2, 0.75, 4);
 
-    for(int i = 0; i < 100; i++){
-        string word = generarPalabra(rand()%8+1);
-        h.insert(word, rand()%1000);
-    }
 
-    h.print();
+    int key = 1;
 
-    cout << h.search("cs");
 
     return 0;
 }
