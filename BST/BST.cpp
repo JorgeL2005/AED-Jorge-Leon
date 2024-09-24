@@ -11,7 +11,7 @@ struct NodeBT {
 };
 
 template<typename T>
-class BST{
+class BST {
 private:
     NodeBT<T>* raiz;
 
@@ -83,6 +83,29 @@ private:
         return node;
     }
 
+    // Función auxiliar para obtener la altura de un nodo
+    int height(NodeBT<T>* node) {
+        if (node == nullptr)
+            return 0;
+        return 1 + max(height(node->left), height(node->right));
+    }
+
+    // Función auxiliar para verificar si un nodo y sus subárboles están balanceados
+    bool isBalanced(NodeBT<T>* node) {
+        if (node == nullptr)
+            return true;
+
+        int leftHeight = height(node->left);
+        int rightHeight = height(node->right);
+
+        // Verificar si la diferencia de alturas es mayor a 1
+        if (abs(leftHeight - rightHeight) > 1)
+            return false;
+
+        // Recursivamente verificar si los subárboles están balanceados
+        return isBalanced(node->left) && isBalanced(node->right);
+    }
+
 public:
     BST() : raiz(nullptr) {}
 
@@ -115,42 +138,43 @@ public:
         inOrder(raiz);
         cout << endl;
     }
+
+    // Función pública para verificar si el árbol está balanceado
+    bool isBalanced() {
+        return isBalanced(raiz);
+    }
 };
 
 int main() {
     BST<int> tree;
 
-    tree.insert(1);
-    tree.insert(5);
-    tree.insert(7);
-    tree.insert(8);
-    tree.insert(9);
-    tree.insert(11);
-    tree.insert(12);
-    tree.insert(13);
-    tree.insert(15);
-    tree.insert(18);
+    tree.insert(3);
+    tree.insert(2);
     tree.insert(20);
-    tree.insert(22);
-    tree.insert(25);
-    tree.insert(26);
+    tree.insert(15);
+    tree.insert(30);
 
 
-
-
-
-    cout << "Arbol en in-order despues de inserciones: ";
+    cout << "Arbol en in-order traversal: ";
     tree.display();
 
-    cout << "Buscando valor 40: ";
-    if(tree.find(40))
-        cout << "Encontrado!" << endl;
-    else
-        cout << "No encontrado!" << endl;
+    cout << "El arbol está balanceado? ";
+    if (tree.isBalanced()) {
+        cout << "Si, esta balanceado." << endl;
+    } else {
+        cout << "No, no esta balanceado." << endl;
+    }
 
-    tree.remove(50);
-    cout << "Arbol en in-order despues de eliminar 50: ";
+    tree.remove(30);
+    cout << "Arbol en in-order despues de eliminar 30: ";
     tree.display();
+
+    cout << "El arbol está balanceado? ";
+    if (tree.isBalanced()) {
+        cout << "Si, esta balanceado." << endl;
+    } else {
+        cout << "No, no esta balanceado." << endl;
+    }
 
     return 0;
 }
