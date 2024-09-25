@@ -155,6 +155,8 @@ int main() {
     tree.insert(30);
 
 
+
+
     cout << "Arbol en in-order traversal: ";
     tree.display();
 
