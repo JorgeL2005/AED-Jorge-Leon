@@ -1,5 +1,5 @@
 #include <iostream>
-
+#include <vector>
 using namespace std;
 
 template <typename T>
@@ -257,6 +257,33 @@ int main() {
         }
         cout << "insert (i)\t\tremove (r)\t\tsearch (s)\t\theight (h)\t\texit (e)\n";
     }
-
     return 0;
 }
+
+
+
+/*
+ *
+ * // Modificar la función para aceptar un vector por referencia
+    void inOrder(TreeNode* node, vector<int>& rpta) const {
+        if (node == nullptr) return;
+        inOrder(node->left, rpta);   // Recorrer el subárbol izquierdo
+        rpta.push_back(node->val);   // Almacenar el valor del nodo en el vector
+        inOrder(node->right, rpta);  // Recorrer el subárbol derecho
+    }
+ *
+ *
+ * Invertir un arbol:
+ *
+ * TreeNode* invertTree(TreeNode* root) {
+        if (root == nullptr){
+            return nullptr;
+        }
+        TreeNode* temp = root->left;
+        root->left = root->right;
+        root->right = temp;
+        invertTree(root->left);
+        invertTree(root->right);
+        return root;
+    }
+ */
