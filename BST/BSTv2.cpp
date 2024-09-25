@@ -286,4 +286,31 @@ int main() {
         invertTree(root->right);
         return root;
     }
+
+
+    Arbol igual:
+
+    class Solution {
+public:
+    bool isSameTree(TreeNode* p, TreeNode* q) {
+        // Si ambos árboles son nulos, son iguales
+        if (p == nullptr && q == nullptr) {
+            return true;
+        }
+
+        // Si uno es nulo y el otro no, no son iguales
+        if (p == nullptr || q == nullptr) {
+            return false;
+        }
+
+        // Si los valores de los nodos son diferentes, no son iguales
+        if (p->val != q->val) {
+            return false;
+        }
+
+        // Recursivamente comparar los subárboles izquierdo y derecho
+        return isSameTree(p->left, q->left) && isSameTree(p->right, q->right);
+    }
+};
+
  */
