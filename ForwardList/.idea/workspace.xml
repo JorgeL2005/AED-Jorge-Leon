@@ -20,19 +20,13 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b3979a3-fce1-4b18-a754-3706c5e3c902" name="Changes" comment="Constructor nuevo">
-      <change beforePath="$PROJECT_DIR$/../DoublyLinkedList/cmake-build-debug/.cmake/api/v1/reply/index-2024-09-04T23-23-26-0954.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DoublyLinkedList/cmake-build-debug/CMakeFiles/3.26.4/CMakeDetermineCompilerABI_C.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../DoublyLinkedList/cmake-build-debug/CMakeFiles/3.26.4/CMakeDetermineCompilerABI_C.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DoublyLinkedList/cmake-build-debug/CMakeFiles/3.26.4/CMakeDetermineCompilerABI_CXX.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../DoublyLinkedList/cmake-build-debug/CMakeFiles/3.26.4/CMakeDetermineCompilerABI_CXX.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DoublyLinkedList/cmake-build-debug/CMakeFiles/3.26.4/CompilerIdC/a.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../DoublyLinkedList/cmake-build-debug/CMakeFiles/3.26.4/CompilerIdC/a.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DoublyLinkedList/cmake-build-debug/CMakeFiles/3.26.4/CompilerIdCXX/a.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../DoublyLinkedList/cmake-build-debug/CMakeFiles/3.26.4/CompilerIdCXX/a.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DoublyLinkedList/cmake-build-debug/CMakeFiles/CMakeConfigureLog.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../DoublyLinkedList/cmake-build-debug/CMakeFiles/CMakeConfigureLog.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DoublyLinkedList/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../DoublyLinkedList/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DoublyLinkedList/cmake-build-debug/CMakeFiles/clion-environment.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../DoublyLinkedList/cmake-build-debug/CMakeFiles/clion-environment.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DoublyLinkedList/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../DoublyLinkedList/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+    <list default="true" id="5b3979a3-fce1-4b18-a754-3706c5e3c902" name="Changes" comment="Forwardlist - edicion verano sin ti">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ForwardList.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/ForwardList.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeConfigureLog.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeConfigureLog.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/build.ninja" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +61,7 @@
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "D:/Utec ciclo 2024-2/AED-Jorge-Leon/ForwardList",
+    "last_opened_file_path": "D:/Utec ciclo 2024-2/AED-Jorge-Leon/DoublyLinkedList",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -77,6 +71,11 @@
   }
 }]]></component>
   <component name="RunManager">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ForwardList" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ForwardList" TARGET_NAME="ForwardList" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ForwardList" RUN_TARGET_NAME="ForwardList">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -95,7 +94,10 @@
       <workItem from="1725492391644" duration="5621000" />
       <workItem from="1725555540129" duration="58000" />
       <workItem from="1736260310822" duration="1963000" />
-      <workItem from="1736262360245" duration="2946000" />
+      <workItem from="1736262360245" duration="6513000" />
+      <workItem from="1736345697844" duration="650000" />
+      <workItem from="1736353104382" duration="2492000" />
+      <workItem from="1736787244172" duration="4778000" />
     </task>
     <task id="LOCAL-00001" summary="Commit1">
       <option name="closed" value="true" />
@@ -129,7 +131,15 @@
       <option name="project" value="LOCAL" />
       <updated>1725555568482</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Forwardlist - edicion verano sin ti">
+      <option name="closed" value="true" />
+      <created>1736301516945</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1736301516945</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -146,6 +156,7 @@
     <MESSAGE value="Commit2" />
     <MESSAGE value="Commit3" />
     <MESSAGE value="Constructor nuevo" />
-    <option name="LAST_COMMIT_MESSAGE" value="Constructor nuevo" />
+    <MESSAGE value="Forwardlist - edicion verano sin ti" />
+    <option name="LAST_COMMIT_MESSAGE" value="Forwardlist - edicion verano sin ti" />
   </component>
 </project>

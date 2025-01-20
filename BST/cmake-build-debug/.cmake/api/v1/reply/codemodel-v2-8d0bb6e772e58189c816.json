@@ -27,7 +27,7 @@
 					[
 						0
 					],
-					"name" : "ForwardList",
+					"name" : "BST",
 					"targetIndexes" : 
 					[
 						0
@@ -38,9 +38,9 @@
 			[
 				{
 					"directoryIndex" : 0,
-					"id" : "ForwardList::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-ForwardList-Debug-e0d904d2295000c7b055.json",
-					"name" : "ForwardList",
+					"id" : "BST::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-BST-Debug-17dc4c510ba6add43610.json",
+					"name" : "BST",
 					"projectIndex" : 0
 				}
 			]
@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "D:/Utec ciclo 2024-2/AED-Jorge-Leon/ForwardList/cmake-build-debug",
-		"source" : "D:/Utec ciclo 2024-2/AED-Jorge-Leon/ForwardList"
+		"build" : "D:/Utec ciclo 2024-2/AED-Jorge-Leon/BST/cmake-build-debug",
+		"source" : "D:/Utec ciclo 2024-2/AED-Jorge-Leon/BST"
 	},
 	"version" : 
 	{

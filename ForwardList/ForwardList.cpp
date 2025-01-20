@@ -222,6 +222,7 @@ public:
 
 
 int main(){
+
     // test lista vacia
     cout << "Test lista vacia" << endl;
     List<double> list1;
@@ -285,5 +286,4 @@ int main(){
     cout << "reversed: ";
     cout << list3 << endl;
 
-    return 0;
 }
