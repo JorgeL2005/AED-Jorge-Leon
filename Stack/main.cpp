@@ -44,6 +44,13 @@ public:
     int size() const {
         return top + 1;
     }
+
+    T topvalue(){
+        if (isEmpty()) {
+            return T();
+        }
+        return arr[top];
+    }
 };
 
 int main() {
@@ -54,10 +61,12 @@ int main() {
     stack.push(30);
     stack.push(40);
     cout << stack.size() << endl;
+    cout << stack.topvalue() << endl;
     cout << "Elemento superior: " << stack.pop() << endl;
     cout << "Elemento superior: " << stack.pop() << endl;
     cout << "Elemento superior: " << stack.pop() << endl;
     cout << stack.size() << endl;
+    cout << stack.topvalue() << endl;
 
     return 0;
 }
