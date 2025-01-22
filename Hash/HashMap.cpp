@@ -241,21 +241,24 @@ private:
         int hash = 0;
         int a = 31;
         for (char c : key) {
-            hash = (hash*a + static_cast<int>(c)) % MAX_SIZE;
+            hash = (hash * a + static_cast<int>(c)) % MAX_SIZE;
+            hash = (hash < 0) ? hash + MAX_SIZE : hash; // Asegurar positivo
         }
         return hash;
     }
+
     // Sobrecarga de funcion hash para int
     int hash_function(int key) {
-        return key % MAX_SIZE;
+        int index = key % MAX_SIZE;
+        return (index < 0) ? index + MAX_SIZE : index; // Asegurar positivo
     }
+
 public:
-    Hashmap(int size, float factor, int list){
-        MAX_SIZE = size;
-        arr = new List<Pair>[MAX_SIZE];
-        MAX_FACTOR = factor;
-        MAX_LIST = list;
+    Hashmap(int size, float factor, int list)
+            : MAX_SIZE(size), MAX_FACTOR(factor), MAX_LIST(list) {
+        arr = new List<Pair>[MAX_SIZE]; // Inicializa el arreglo de listas
     }
+
     ~Hashmap(){
         delete[] arr;
     }
@@ -311,21 +314,24 @@ public:
             arr[i].clear();
         }
     }
-    void rehash(int newSize){
-        List<Pair>* temp = arr;
+    void rehash(int newSize) {
+        List<Pair>* oldArr = arr;
         int oldSize = MAX_SIZE;
+
         MAX_SIZE = newSize;
-        arr = new List<Pair>[MAX_SIZE];
+        arr = new List<Pair>[MAX_SIZE]; // Nuevo arreglo
+
         for (int i = 0; i < oldSize; i++) {
-            Node<Pair>* tempNode = temp[i].getHead();
-            while (tempNode != nullptr) {
-                insert(tempNode->data.key, tempNode->data.value);
-                tempNode = tempNode->next;
+            Node<Pair>* current = oldArr[i].getHead();
+            while (current != nullptr) {
+                insert(current->data.key, current->data.value); // Inserta en el nuevo
+                current = current->next;
             }
         }
-        delete[] temp;
-        cout << "Se hizo un rehash. Nuevo tamanio: " << newSize << endl;
+        delete[] oldArr; // Libera memoria del arreglo antiguo
+        cout << "Se hizo un rehash. Nuevo tamaño: " << newSize << endl;
     }
+
 
     void print(){
         for (int i = 0; i < MAX_SIZE; i++) {
@@ -341,7 +347,7 @@ public:
     }
 };
 
-
+/*
 string generarPalabra(int longitud) {
     const string caracteres = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     string palabra;
@@ -353,13 +359,18 @@ string generarPalabra(int longitud) {
 
     return palabra;
 }
-
+*/
 int main() {
     Hashmap<string, int> h(2, 0.75, 4);
+/*
+    for(int i = 0; i < 100; i++){
+        string word = generarPalabra(rand()%8+1);
+        h.insert(word, rand()%1000);
+    }
 
+    h.print();
 
-    int key = 1;
-
-
+    cout << h.search("cs");
+*/
     return 0;
 }
