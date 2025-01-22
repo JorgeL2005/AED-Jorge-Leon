@@ -3,4 +3,5 @@ project(Queue)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(Queue main.cpp)
+add_executable(Queue queue.cpp
+        deque.cpp)

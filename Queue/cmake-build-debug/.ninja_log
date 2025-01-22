@@ -1,3 +1,7 @@
 # ninja log v5
-0	542	7591108701980240	CMakeFiles/Queue.dir/main.cpp.obj	d18ecd3b3fbfe139
-544	685	7591108703354358	Queue.exe	ff44692793d01c79
+3	412	7591143347795880	CMakeFiles/Queue.dir/main.cpp.obj	d18ecd3b3fbfe139
+413	534	7591143348952497	Queue.exe	ff44692793d01c79
+8	416	7591149794147405	CMakeFiles/Queue.dir/deque.cpp.obj	d0c9de666c15366b
+0	426	7591149794267361	CMakeFiles/Queue.dir/queue.cpp.obj	82ba3b20a7c10f0a
+5	416	7591149991867810	CMakeFiles/Queue.dir/queue.cpp.obj	82ba3b20a7c10f0a
+417	521	7591149992863450	Queue.exe	2dfa35b0da45aa2f

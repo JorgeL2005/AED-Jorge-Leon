@@ -49,8 +49,15 @@ public:
     int size() const {
         return count;
     }
-};
 
+    T frontvalue(){
+        if (isEmpty()) {
+            return T();
+        }
+        return arr[front];
+    }
+};
+/*
 // Ejemplo de uso
 int main() {
     Queue<int> q(6);
@@ -67,6 +74,7 @@ int main() {
     q.enqueue(5);
     q.enqueue(6);
     q.enqueue(7);
+    cout << q.frontvalue() << endl;
     cout << "size: " << q.size() << endl;
     cout << "Dequeued: " << q.dequeue() << endl;
     cout << "Dequeued: " << q.dequeue() << endl;
@@ -78,3 +86,4 @@ int main() {
 
     return 0;
 }
+ */
