@@ -4,4 +4,5 @@ project(DoublyLinkedList)
 set(CMAKE_CXX_STANDARD 14)
 
 add_executable(DoublyLinkedList
-        DoublyLinkedList.cpp)
+        DoublyLinkedList.cpp
+        Circular.cpp)

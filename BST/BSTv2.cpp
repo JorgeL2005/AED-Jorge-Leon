@@ -195,8 +195,32 @@ public:
         }
     }
 };
+/*
+int findBottomLeftValue(TreeNode* root) {
+    Queue<TreeNode*> q(10000);
+    q.enqueue(root);
+    int BF = root->val; // Nodo más a la izquierda
+    while(!q.isEmpty()){
+        int level = q.size();
+        for (int i = 0; i < level; ++i){
+            TreeNode* node = q.frontvalue();
+            q.dequeue();
+            if (i == 0) {
+                BF = node->val;
+            }
+            if (node->left) q.enqueue(node->left);
+            if (node->right) q.enqueue(node->right);
 
+        }
+
+    }
+    return BF;
+
+
+}
+*/
 int main() {
+
     BinaryTree<int> tree;
 
     tree.insert(12);
