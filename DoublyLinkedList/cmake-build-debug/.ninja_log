@@ -1,0 +1,4 @@
+# ninja log v5
+1	657	7592957033482643	CMakeFiles/DoublyLinkedList.dir/DoublyLinkedList.cpp.obj	b1cd5f643c6cda79
+13	710	7592957034022120	CMakeFiles/DoublyLinkedList.dir/Circular.cpp.obj	a06601c7acedc51c
+710	909	7592957035960141	DoublyLinkedList.exe	e62e78b99b6b7fa9
