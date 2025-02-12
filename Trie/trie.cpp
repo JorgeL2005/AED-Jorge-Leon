@@ -1,3 +1,4 @@
+/*
 #include <iostream>
 using namespace std;
 
@@ -82,3 +83,78 @@ int main() {
 
     return 0;
 }
+*/
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+#define ALPHABET_SIZE 26
+
+struct TrieNode {
+    TrieNode* children[ALPHABET_SIZE];
+    bool isEndOfWord;
+    int countChildren;  // Número de hijos activos en este nodo
+
+    TrieNode() {
+        isEndOfWord = false;
+        countChildren = 0;
+        for (int i = 0; i < ALPHABET_SIZE; i++) {
+            children[i] = nullptr;
+        }
+    }
+};
+
+class Trie {
+private:
+    TrieNode* root;
+
+public:
+    Trie() {
+        root = new TrieNode();
+    }
+
+    void insert(const string& word) {
+        TrieNode* node = root;
+        for (char c : word) {
+            int index = c - 'a';
+            if (node->children[index] == nullptr) {
+                node->children[index] = new TrieNode();
+                node->countChildren++;  // Aumentamos el conteo de hijos
+            }
+            node = node->children[index];
+        }
+        node->isEndOfWord = true;
+    }
+
+    string longestCommonPrefix() {
+        TrieNode* node = root;
+        string prefix = "";
+
+        while (node && node->countChildren == 1 && !node->isEndOfWord) {
+            for (int i = 0; i < ALPHABET_SIZE; i++) {
+                if (node->children[i]) {
+                    prefix += char(i + 'a'); // Convertimos índice a carácter
+                    node = node->children[i];
+                    break;
+                }
+            }
+        }
+        return prefix;
+    }
+};
+
+
+class Solution {
+public:
+    string longestCommonPrefix(vector<string>& strs) {
+        if (strs.empty()) return "";
+
+        Trie trie;
+        for (const string& word : strs) {
+            trie.insert(word);
+        }
+
+        return trie.longestCommonPrefix();
+    }
+};
