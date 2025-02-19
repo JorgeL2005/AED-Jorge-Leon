@@ -1,3 +1,5 @@
 # ninja log v5
 0	1082	7610256533743770	CMakeFiles/Grafos.dir/main.cpp.obj	ec24d47cc4a25896
-1084	1271	7610256535549113	Grafos.exe	2ade8ffd54e22bcc
+865	1097	7616338039019380	Grafos.exe	5c2302d0360329fe
+5	864	7616338036859074	CMakeFiles/Grafos.dir/grafov1.cpp.obj	b7697fac34395f03
+12	967	7616337893335007	CMakeFiles/Grafos.dir/grafov2.cpp.obj	34a0e5dbfd3393fc
