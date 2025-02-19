@@ -1,58 +1,80 @@
 #include <iostream>
 #include <vector>
+#include <limits>
 
 using namespace std;
 
+// 🔹 Implementación de Pair
+template <typename edgeValueType>
+struct Pair {
+    int key;
+    edgeValueType value;
+
+    Pair() : key(int()), value(edgeValueType()) {}
+    Pair(const int& key, const edgeValueType& value) : key(key), value(value) {}
+
+    void setValue(const edgeValueType& newValue) {
+        value = newValue;
+    }
+};
+
+// 🔹 Implementación de Queue
+template <typename T>
+class Queue {
+private:
+    T* arr;
+    int MAX_SIZE;
+    int front;
+    int rear;
+    int count;
+public:
+    Queue(int size) : MAX_SIZE(size), front(0), rear(0), count(0) {
+        arr = new T[MAX_SIZE];
+    }
+
+    ~Queue() {
+        delete[] arr;
+    }
+
+    bool isEmpty() const {
+        return count == 0;
+    }
+
+    bool isFull() const {
+        return count == MAX_SIZE;
+    }
+
+    void enqueue(T value) {
+        if (isFull()) {
+            return;
+        }
+        arr[rear] = value;
+        rear = (rear + 1) % MAX_SIZE;
+        count++;
+    }
+
+    T dequeue() {
+        if (isEmpty()) {
+            return T();
+        }
+        T value = arr[front];
+        front = (front + 1) % MAX_SIZE;
+        count--;
+        return value;
+    }
+
+    int size() const {
+        return count;
+    }
+};
+
+// 🔹 Implementación de Grafo
 template <typename edgeValueType>
 class Grafo {
 private:
-    struct Pair {
-        int key;
-        edgeValueType value;
-
-        Pair() : key(int()), value(edgeValueType()) {}
-        Pair(const int& key, const edgeValueType& value) : key(key), value(value) {}
-
-        void setValue(const edgeValueType& newValue) {
-            value = newValue;
-        }
-    };
-
     bool isDirected;
     int numVertices;
-    vector<vector<Pair>> listaAdyacencia;
-
-    void auxDFS(int vertice, vector<bool>& visitado) {
-        visitado[vertice] = true;
-        cout << vertice << " ";
-
-        for (Pair vecino : listaAdyacencia[vertice]) {
-            if (!visitado[vecino.key]) {
-                auxDFS(vecino.key, visitado);
-            }
-        }
-    }
-
-    void auxBFS(int vertice, vector<bool>& visitado, vector<int>& nivelActual) {
-        // Procesar los nodos del nivel actual
-        if (nivelActual.empty()) return;
-
-        vector<int> siguienteNivel; // Almacena los nodos del siguiente nivel
-
-        for (int nodo : nivelActual) {
-            cout << nodo << " "; // Imprimir nodo visitado
-            for (Pair vecino : listaAdyacencia[nodo]) {
-                if (!visitado[vecino.key]) {
-                    visitado[vecino.key] = true;
-                    siguienteNivel.push_back(vecino.key); // Añadir vecino al siguiente nivel
-                }
-            }
-        }
-
-        // Llamada recursiva para procesar el siguiente nivel
-        auxBFS(vertice, visitado, siguienteNivel);
-    }
-
+    vector<vector<Pair<edgeValueType>>> listaAdyacencia;
 
 public:
     Grafo(int vertices, bool dirigido = false) {
@@ -62,90 +84,75 @@ public:
     }
 
     void agregarArista(int origen, int destino, edgeValueType value) {
-        if(origen < 0 || origen >= numVertices || destino < 0 || destino >= numVertices) {
-            cout << "Error: Vertices fuera de rango" << endl;
-            return;
-        }
-        if(isDirected){ // Dirigido
-            listaAdyacencia[origen].push_back(Pair(destino, value));
-            return;
-        } else { // No dirigido
-            listaAdyacencia[origen].push_back(Pair(destino, value));
-            listaAdyacencia[destino].push_back(Pair(origen, value));
+        listaAdyacencia[origen].push_back(Pair<edgeValueType>(destino, value));
+        if (!isDirected) {
+            listaAdyacencia[destino].push_back(Pair<edgeValueType>(origen, value));
         }
     }
 
-    void DFS(int inicio) {
+    // 🔹 Implementación de Dijkstra
+    vector<edgeValueType> dijkstra(int inicio) {
+        vector<edgeValueType> dist(numVertices, numeric_limits<edgeValueType>::max());
         vector<bool> visitado(numVertices, false);
-        auxDFS(inicio, visitado);
-    }
+        Queue<int> q(numVertices * numVertices); // Simulación de una cola de prioridad
 
-    void BFS(int inicio) {
-        vector<bool> visitado(numVertices, false);
-        vector<int> nivelActual; // Nodo inicial como el nivel actual
-        nivelActual.push_back(inicio);
-        visitado[inicio] = true;
+        dist[inicio] = 0;
+        q.enqueue(inicio);
 
-        auxBFS(inicio, visitado, nivelActual);
-    }
+        while (!q.isEmpty()) {
+            // 🟢 Encontrar el nodo con menor distancia en la cola
+            int u = -1;
+            edgeValueType minDist = numeric_limits<edgeValueType>::max();
+            int qSize = q.size();
 
-    int contarComponentesConexas() {
-        vector<bool> visitado(numVertices, false);
-        int componentes = 0;
+            for (int i = 0; i < qSize; i++) {
+                int v = q.dequeue();
+                if (!visitado[v] && dist[v] < minDist) {
+                    minDist = dist[v];
+                    u = v;
+                }
+                q.enqueue(v); // Volver a meterlo en la cola
+            }
 
-        for (int i = 0; i < numVertices; i++) {
-            if (!visitado[i]) {
-                componentes++;
-                auxDFS(i, visitado); // Realiza DFS desde este nodo no visitado
+            // Si no encontramos un nodo válido, terminamos
+            if (u == -1) break;
+            visitado[u] = true;
+
+            // 🔹 Relajación de distancias
+            for (const Pair<edgeValueType>& vecino : listaAdyacencia[u]) {
+                int v = vecino.key;
+                edgeValueType peso = vecino.value;
+                edgeValueType nuevaDistancia = dist[u] + peso;
+
+                if (!visitado[v] && nuevaDistancia < dist[v]) {
+                    dist[v] = nuevaDistancia;
+                    q.enqueue(v); // Añadir a la cola para procesar
+                }
             }
         }
 
-        return componentes;
-    }
-
-    int contarComponentesConexasBFS() {
-        vector<bool> visitado(numVertices, false);
-        int componentes = 0;
-
-        for (int i = 0; i < numVertices; i++) {
-            if (!visitado[i]) {
-                componentes++;
-                vector<int> nivelActual = {i}; // Inicia desde un nodo no visitado
-                visitado[i] = true;
-                auxBFS(i, visitado, nivelActual); // Llamar al BFS recursivo
-            }
-        }
-
-        return componentes;
-    }
-
-    void imprimirGrafo() {
-        for (int i = 0; i < numVertices; i++) {
-            cout << "Vertice " << i << ":";
-            for (Pair arista : listaAdyacencia[i]) {
-                cout << " -> " << arista.key << ":("<< arista.value << ")";
-            }
-            cout << endl;
-        }
+        return dist;
     }
 };
 
+// 🔹 Función principal para probar Dijkstra sin `priority_queue`
 int main() {
-    int vertices = 6;
-    Grafo<float> grafo(vertices, true);
+    Grafo<int> g(5, false);
 
-    grafo.agregarArista(0, 5,1);
-    grafo.agregarArista(1, 0,1);
-    grafo.agregarArista(1, 2,1);
-    grafo.agregarArista(1, 3,1);
-    grafo.agregarArista(3, 2,1);
-    grafo.agregarArista(2, 4,1);
-    grafo.agregarArista(4, 5,1);
+    g.agregarArista(0, 1, 2);
+    g.agregarArista(0, 3, 6);
+    g.agregarArista(1, 2, 3);
+    g.agregarArista(1, 3, 8);
+    g.agregarArista(1, 4, 5);
+    g.agregarArista(2, 4, 7);
+    g.agregarArista(3, 4, 9);
 
-    grafo.imprimirGrafo();
+    vector<int> distancias = g.dijkstra(0);
 
-    grafo.DFS(0);
-    grafo.DFS(1);
+    cout << "Distancias mínimas desde el nodo 0:" << endl;
+    for (int i = 0; i < distancias.size(); i++) {
+        cout << "Nodo " << i << ": " << distancias[i] << endl;
+    }
 
     return 0;
 }
