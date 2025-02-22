@@ -21,6 +21,7 @@ struct Header {
 
 
 class SparseMatrix {
+    friend SparseMatrix addSparseMatrices(const SparseMatrix& sm1, const SparseMatrix& sm2);
 private:
     Header* rowHead;
     Header* colHead;
@@ -152,26 +153,103 @@ public:
     }
 };
 
+SparseMatrix addSparseMatrices(const SparseMatrix& sm1, const SparseMatrix& sm2) {
+    SparseMatrix result(sm1.rows, sm1.cols);
+
+    // Recorrer la primera matriz y agregar sus valores a la matriz resultante
+    Header* rowCurr = sm1.rowHead;
+    while (rowCurr) {
+        Cell* cellCurr = rowCurr->next;
+        while (cellCurr) {
+            result.insert(cellCurr->row, cellCurr->col, cellCurr->value);
+            cellCurr = cellCurr->nextRow;
+        }
+        rowCurr = rowCurr->nextHeader;
+    }
+
+    // Recorrer la segunda matriz y sumar sus valores a la matriz resultante
+    rowCurr = sm2.rowHead;
+    while (rowCurr) {
+        Cell* cellCurr = rowCurr->next;
+        while (cellCurr) {
+            // Obtener el valor actual en la matriz resultante
+            int currentVal = 0;
+            Header* resultRowHeader = result.getOrCreateRowHeader(cellCurr->row);
+            Cell* resultCell = resultRowHeader->next;
+
+            while (resultCell && resultCell->col < cellCurr->col) {
+                resultCell = resultCell->nextRow;
+            }
+
+            if (resultCell && resultCell->col == cellCurr->col) {
+                currentVal = resultCell->value;
+            }
+
+            // Insertar la suma en la matriz resultante
+            result.insert(cellCurr->row, cellCurr->col, currentVal + cellCurr->value);
+
+            cellCurr = cellCurr->nextRow;
+        }
+        rowCurr = rowCurr->nextHeader;
+    }
+
+    return result;
+}
+
 
 int main() {
-    SparseMatrix sm(5, 5);
+    // Ejercicio 1
+    cout << "Problema 1:" << endl;
+    SparseMatrix sm(9, 9);
 
-    sm.insert(1, 1, 10);
-    sm.insert(2, 3, 20);
-    sm.insert(4, 0, 30);
+    sm.insert(2, 1, 3);
+    sm.insert(2, 2, 5);
+    sm.insert(2, 7, 9);
+    sm.insert(3, 7, 5);
+    sm.insert(4, 5, 5);
+    sm.insert(4, 9, 22);
+    sm.insert(6, 5, 5);
+    sm.insert(7, 2, 5);
+    sm.insert(7, 8, 5);
+    sm.insert(9, 9, 5);
 
-    cout << "Matriz dispersa:" << endl;
     sm.display();
 
-    sm.insert(3, 2, 8);
+    // Ejercicio 2
+    cout << "Problema 2:" << endl;
 
-     cout << "Matriz dispersa:" << endl;
-    sm.display();
+    cout << "Matriz 1:" << endl;
+    SparseMatrix sm1(9,7);
 
-    sm.insert(3, 2, 80);
+    sm1.insert(2, 3, 3);
+    sm1.insert(5, 1, 3);
+    sm1.insert(5, 4, 1);
+    sm1.insert(7, 4, 5);
+    sm1.insert(8, 1, 1);
+    sm1.insert(8, 6, 4);
+    sm1.insert(9, 3, 2);
 
-     cout << "Matriz dispersa:" << endl;
-    sm.display();
+    sm1.display();
+
+    cout << "Matriz 2:" << endl;
+    SparseMatrix sm2(9,7);
+    sm2.insert(2, 3, 4);
+    sm2.insert(5, 1, 2);
+    sm2.insert(5, 4, 1);
+    sm2.insert(7, 4, 4);
+    sm2.insert(8, 1, 3);
+    sm2.insert(8, 6, 2);
+    sm2.insert(9, 3, 1);
+
+    sm2.display();
+
+    cout << "Matriz resultante:" << endl;
+    SparseMatrix result = addSparseMatrices(sm1, sm2);
+    result.display();
+
+
+
+
 
     return 0;
 }
