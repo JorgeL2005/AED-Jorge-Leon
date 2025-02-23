@@ -1,5 +1,5 @@
 # Algoritmos y Estructuras de Datos / UTEC 2025-0 (Jorge Leon)
-Repositorio para códigos del curso. 
+Repositorio para códigos del curso. Código Fuente del proyecto final.
 
 Carpetas:
 - ForwardList: Códigos con operaciones relacionadas con listas enlazadas (Tema visto en la semana 2)
