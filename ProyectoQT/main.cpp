@@ -148,8 +148,8 @@ int main() {
     vector<vector<Pixel>> img = loadImage("images/goku.jpg", width, height);
 
     QuadTree qt(img);
-    qt.saveCompressedImage("goku-compressed.jpg");
+    qt.saveCompressedImage("goku-segmentation.jpg");
 
-    cout << "Imagen comprimida guardada como compressed.jpg" << endl;
+    cout << "Imagen segmentada exitosamente" << endl;
     return 0;
 }
