@@ -1,7 +1,3 @@
 # Algoritmos y Estructuras de Datos / UTEC 2025-0 (Jorge Leon)
-Repositorio para códigos del curso. Código Fuente del proyecto final.
-
-Carpetas:
-- ForwardList: Códigos con operaciones relacionadas con listas enlazadas (Tema visto en la semana 2)
-- DoublyLinkedList: Códigos con operaciones relacionadas con listas doblemente enlazadas (Tema visto en la semana 3)
-- Pilas, Colas e Iteradores: Códigos que sirven como alternativa de STL. No se hace uso de ninguna libreria. (Tema visto en la semana 4)
+Repositorio que contiene todas las estructuras de datos necesarias para el curso. También contiene el código fuente del proyecto final.
+# Estructuras de datos 
